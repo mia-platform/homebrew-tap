@@ -2,21 +2,21 @@
 class Miactl < Formula
   desc "miactl is the cli of the mia-platform DevOps Console"
   homepage "https://mia-platform.eu"
-  version "0.1.0"
+  version "0.2.0"
   bottle :unneeded
 
   if OS.mac?
-    url "https://github.com/mia-platform/miactl/releases/download/v0.1.0/miactl_Darwin_x86_64.tar.gz"
-    sha256 "6d5570f27653ffb048b644286130eb485c7952d4e62b7672cc259e511bb24b38"
+    url "https://github.com/mia-platform/miactl/releases/download/v0.2.0/miactl_Darwin_x86_64.tar.gz"
+    sha256 "3343d9cc879c2f08b30e1ad2dea16fad68cd9771ed0068cf4400e5ef5dd82c05"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.1.0/miactl_Linux_x86_64.tar.gz"
-      sha256 "339548254a92b26a0e72ff399d24b2e6f62468dbbc1ad7e86a642eeb00fdf779"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.2.0/miactl_Linux_x86_64.tar.gz"
+      sha256 "907dff33fec58b89904016de0ff0d20a800fce29eaceecceed1f676ccd206874"
     end
     if Hardware::CPU.arm?
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/miactl/releases/download/v0.1.0/miactl_Linux_arm64.tar.gz"
-        sha256 "c39cd8d25dfec6dea846d270b9e1794c857c48740f2601ffbb031cbe811f3558"
+        url "https://github.com/mia-platform/miactl/releases/download/v0.2.0/miactl_Linux_arm64.tar.gz"
+        sha256 "c4cebadc557dbece5ef47b82c03dec9bb6b793b8018e2300d8ac2cf64f62f9c0"
       else
       end
     end
