@@ -5,33 +5,44 @@
 class Miactl < Formula
   desc "miactl is the cli of the mia-platform DevOps Console"
   homepage "https://mia-platform.eu"
-  version "0.3.0"
-  bottle :unneeded
+  version "0.3.1"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.3.0/miactl_Darwin_x86_64.tar.gz"
-      sha256 "5b4cc941fb90ed6c8f854a93a519560807839bda0187fa89dfff0b78de8c9977"
-    end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.3.0/miactl_Darwin_arm64.tar.gz"
-      sha256 "c118635a0780d50a500e44df6016677cf744bc87852a3e3c70eefdf59cb5c15b"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.3.1/miactl_Darwin_arm64.tar.gz"
+      sha256 "8932541a89751a493f35e887da046e20e9d127918b963120106d51d93dca01de"
+
+      def install
+        bin.install "miactl"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/mia-platform/miactl/releases/download/v0.3.1/miactl_Darwin_x86_64.tar.gz"
+      sha256 "6528d15293be72d3dfca363845aae62f08e4891fec29f14c396761e5df8db1be"
+
+      def install
+        bin.install "miactl"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.3.0/miactl_Linux_x86_64.tar.gz"
-      sha256 "27efbfa9c6d639cd2c7bc89defc73c5b9898f1ac289374af4564bcac675c63a1"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.3.1/miactl_Linux_x86_64.tar.gz"
+      sha256 "30d59d0465f4757982e3d7050c5e2a88bfe3b5c4a55d0d9eaf09a6d697c48f43"
+
+      def install
+        bin.install "miactl"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.3.0/miactl_Linux_arm64.tar.gz"
-      sha256 "54b4a3a29f87b35cb5614d45375dcced5b791c17d546ba858e60b43971ee46b0"
-    end
-  end
+      url "https://github.com/mia-platform/miactl/releases/download/v0.3.1/miactl_Linux_arm64.tar.gz"
+      sha256 "2b92ae31a1c9d62414afdf97d6842add6fde001a7efcfdaa1388b13c22ac2a28"
 
-  def install
-    bin.install "miactl"
+      def install
+        bin.install "miactl"
+      end
+    end
   end
 
   test do
