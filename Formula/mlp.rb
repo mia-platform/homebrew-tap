@@ -5,20 +5,20 @@
 class Mlp < Formula
   desc "mlp is a CLI used to interpolate and deploy resource on Kubernetes"
   homepage "https://mia-platform.eu"
-  version "1.0.2"
+  version "1.0.3"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.0.2/mlp_Darwin_x86_64.tar.gz"
-      sha256 "6beee292a669482e385f33ff0745fd873c47519cf84920990c6a8e05c553a50e"
+    if Hardware::CPU.arm?
+      url "https://github.com/mia-platform/mlp/releases/download/v1.0.3/mlp_Darwin_arm64.tar.gz"
+      sha256 "22fd93f0b1078e227ebe6825aba2c90067c6aa9085605f141da708abc6e46cb3"
 
       def install
         bin.install "mlp"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.0.2/mlp_Darwin_arm64.tar.gz"
-      sha256 "1f7bfce0e13f6256ce4db22c4fb4c8f717396691fd7bfaf083af42260511fa9c"
+    if Hardware::CPU.intel?
+      url "https://github.com/mia-platform/mlp/releases/download/v1.0.3/mlp_Darwin_x86_64.tar.gz"
+      sha256 "f1e25e4fcbbe7898225b34e0823f1f5ccef3f62667ae9c08debb63678e256707"
 
       def install
         bin.install "mlp"
@@ -28,16 +28,16 @@ class Mlp < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.0.2/mlp_Linux_arm64.tar.gz"
-      sha256 "339949b4c1539c1c6ffd8b8b3daa394e8d3f09bb539de762a20ea8aba2ed45a3"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.0.3/mlp_Linux_arm64.tar.gz"
+      sha256 "85b13f291450186691dcd1f95ac4d96ec64458f7bbe0a82826c6ea5614352581"
 
       def install
         bin.install "mlp"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.0.2/mlp_Linux_x86_64.tar.gz"
-      sha256 "0e0741bb4db14c376976311f9fab50e560134157b91a9659b40e85dcf4b70dc1"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.0.3/mlp_Linux_x86_64.tar.gz"
+      sha256 "d31dca9dcb91df205ecf00af37641dda10c37409116eee1688ecae6693ecbe8d"
 
       def install
         bin.install "mlp"
