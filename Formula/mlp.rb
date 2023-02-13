@@ -5,20 +5,20 @@
 class Mlp < Formula
   desc "mlp is a CLI used to interpolate and deploy resource on Kubernetes"
   homepage "https://mia-platform.eu"
-  version "1.1.0"
+  version "1.2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.1.0/mlp_Darwin_arm64.tar.gz"
-      sha256 "25bc7cb61f28bd7bca0e0159f85485e2f683f041db29240e70bb25c18bfc9319"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.2.0/mlp_Darwin_arm64.tar.gz"
+      sha256 "3d0da59cf2eb70f8700b41dc164dfa05d9f3070a8286f4213c952b27f36e0b53"
 
       def install
         bin.install "mlp"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.1.0/mlp_Darwin_x86_64.tar.gz"
-      sha256 "aaee781e37a6635735c961d156938b1e3074a4de93d2c330f6b7dfefbc6254a6"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.2.0/mlp_Darwin_x86_64.tar.gz"
+      sha256 "f8cd8d1a53884536fcf7467f74be4696840f429fbf272c7397b09cc35a68d6b3"
 
       def install
         bin.install "mlp"
@@ -28,16 +28,16 @@ class Mlp < Formula
 
   on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.1.0/mlp_Linux_arm64.tar.gz"
-      sha256 "6e10342f84fc3861e9c8cc8a7130b6a0e1db74bde7160bb207645cd9233fa7ef"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.2.0/mlp_Linux_arm64.tar.gz"
+      sha256 "751607796383ee15c34050edc60348c8de7e24c56db8611e03b1b0441915e365"
 
       def install
         bin.install "mlp"
       end
     end
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.1.0/mlp_Linux_x86_64.tar.gz"
-      sha256 "aa51feb652140dc68f869c3d3db6363c35f26d369ef98c3c838deb636223a327"
+      url "https://github.com/mia-platform/mlp/releases/download/v1.2.0/mlp_Linux_x86_64.tar.gz"
+      sha256 "580a07084c4b07d3cbc7922779911cf36ba8121197668be946dc092ff48cdda8"
 
       def install
         bin.install "mlp"
