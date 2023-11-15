@@ -5,21 +5,21 @@
 class Miactl < Formula
   desc "Mia Platform Cli for Console"
   homepage "https://www.mia-platform.eu"
-  version "0.8.0"
+  version "0.9.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.8.0/miactl-darwin-amd64"
-      sha256 "e5a37fc44221f2234105dce547fd4794c3803509e71e9d7d19af8b4fa26621bc"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.9.0/miactl-darwin-amd64"
+      sha256 "ce32950c7fae9d0e783352945fe5c745149929c4e991bd66ee1f6621d3cc6dd0"
 
       def install
         bin.install "miactl-darwin-amd64" => "miactl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.8.0/miactl-darwin-arm64"
-      sha256 "f441af253a9848c6813e7954e0be502030deeef2d8c48f53f3b0cc11489fbbea"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.9.0/miactl-darwin-arm64"
+      sha256 "575afe47020c35529c4cf34238ad865e04fd0d8fec0a6c03cccdf8d0551369de"
 
       def install
         bin.install "miactl-darwin-arm64" => "miactl"
@@ -29,27 +29,27 @@ class Miactl < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.8.0/miactl-linux-amd64"
-      sha256 "fdfc87a08df85115bc9cdbcdec134428fad35c25cfdb6dc8a773ac61c889bd08"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.9.0/miactl-linux-amd64"
+      sha256 "2c3f80f4de7d9321ee16da45db9338a3d7e98ad5caea1180c5cd672370ae17f2"
 
       def install
         bin.install "miactl-linux-amd64" => "miactl"
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.8.0/miactl-linux-arm64"
-      sha256 "cf9c8e5211ff41673de871a4fb9c763b276189a6ffa11f8b6ed56520e6c4ea14"
-
-      def install
-        bin.install "miactl-linux-arm64" => "miactl"
-      end
-    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.8.0/miactl-linux-armv6"
-      sha256 "4b9e2f007ad7b6d6eb2530e44f98496af15ed96a1cd4e3598f2c84f2db124b10"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.9.0/miactl-linux-armv6"
+      sha256 "d54f62841712cbea89b5b1f9696fc9e854ee59e4714a10e3e46d0fdb55ce3cd2"
 
       def install
         bin.install "miactl-linux-armv6" => "miactl"
+      end
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/miactl/releases/download/v0.9.0/miactl-linux-arm64"
+      sha256 "a9812a9cef93a28b401807e7108a46949ea85d853ffa2276ba53c836b61a43ac"
+
+      def install
+        bin.install "miactl-linux-arm64" => "miactl"
       end
     end
   end
