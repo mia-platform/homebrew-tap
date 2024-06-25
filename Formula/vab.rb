@@ -15,8 +15,6 @@ class Vab < Formula
 
       def install
         bin.install "vab-darwin-amd64" => "vab"
-
-        generate_completions_from_executable(bin/"vab", "completion")
       end
     end
     if Hardware::CPU.arm?
