@@ -5,13 +5,13 @@
 class Vab < Formula
   desc "cli for managing the installation of day 2 operation tools on multiple kubernetes clusters"
   homepage "https://www.mia-platform.eu"
-  version "0.10.1"
+  version "0.11.0"
   license "Apache-2.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/mia-platform/vab/releases/download/v0.10.1/vab-darwin-amd64"
-      sha256 "3c86d82b11f900fca9265fe51bda8a07e4424bf0e7bd8053451817f014aa8b5d"
+      url "https://github.com/mia-platform/vab/releases/download/v0.11.0/vab-darwin-amd64"
+      sha256 "85d65de2cbff7cd8ae66a8844c4a50453db171e4f3ce82d225fa5eff4805b3a1"
 
       def install
         bin.install "vab-darwin-amd64" => "vab"
@@ -21,8 +21,8 @@ class Vab < Formula
       end
     end
     on_arm do
-      url "https://github.com/mia-platform/vab/releases/download/v0.10.1/vab-darwin-arm64"
-      sha256 "416eba7a98be907fa7ffc484ccbc8b16e8b10086c3bd7a3a10e0ad12fb3611f7"
+      url "https://github.com/mia-platform/vab/releases/download/v0.11.0/vab-darwin-arm64"
+      sha256 "a616dd0a8d8c0e1a62bb8d501fd4dd8e550908afef64bdbc45c232292ee8b7ac"
 
       def install
         bin.install "vab-darwin-arm64" => "vab"
@@ -36,8 +36,8 @@ class Vab < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.10.1/vab-linux-amd64"
-        sha256 "4a858eecd967a355bba7b6b3ecfbec6da533f513fb1163d6ece0c99c4a54b039"
+        url "https://github.com/mia-platform/vab/releases/download/v0.11.0/vab-linux-amd64"
+        sha256 "10d7503172565d8b6d5ca105cc8e2860fb201a263c15738af6c8d956d8bdbc58"
 
         def install
           bin.install "vab-linux-amd64" => "vab"
@@ -49,8 +49,8 @@ class Vab < Formula
     end
     on_arm do
       if !Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.10.1/vab-linux-armv6"
-        sha256 "dc70dc5c8cc16c34239f870fc4aab9ce52f8d01fd3c6d04b98bb49181ba04cae"
+        url "https://github.com/mia-platform/vab/releases/download/v0.11.0/vab-linux-armv6"
+        sha256 "7fd070ac54a4437b7ff334bc5302a591fd5fd0bb5a6145343ce44e539c82717b"
 
         def install
           bin.install "vab-linux-armv6" => "vab"
@@ -62,8 +62,8 @@ class Vab < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.10.1/vab-linux-arm64"
-        sha256 "acbe761f3045a2bf72be885a56bc618bf58e2441fad18e6b56f09ccd9cfeaea0"
+        url "https://github.com/mia-platform/vab/releases/download/v0.11.0/vab-linux-arm64"
+        sha256 "608083f3011610032ea1eb2df2d58a01a06f5855a77f06869a78ce5a052edd0c"
 
         def install
           bin.install "vab-linux-arm64" => "vab"
