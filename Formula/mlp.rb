@@ -5,51 +5,72 @@
 class Mlp < Formula
   desc "mlp is a CLI used to interpolate and deploy resource on Kubernetes"
   homepage "https://www.mia-platform.eu"
-  version "1.2.3"
+  version "2.0.0"
   license "Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.2.3/mlp-darwin-arm64"
-      sha256 "1205ed01984f95842240f8d99bdf3712571450f2dc4fa63849af3db698528e7d"
-
-      def install
-        bin.install "mlp-darwin-arm64" => "mlp"
-      end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.2.3/mlp-darwin-amd64"
-      sha256 "9af0fcf7b2506db1b851ac5f03e5cb1e7be0e09eb3c5dbcae8e96bd7e656261c"
+    on_intel do
+      url "https://github.com/mia-platform/mlp/releases/download/v2.0.0/mlp-darwin-amd64"
+      sha256 "0cf8e30f32070e6231bf883fb95a26232c616bfbd6b4d0ff686c70e14f944878"
 
       def install
         bin.install "mlp-darwin-amd64" => "mlp"
+
+        chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"mlp", "completion")
+      end
+    end
+    on_arm do
+      url "https://github.com/mia-platform/mlp/releases/download/v2.0.0/mlp-darwin-arm64"
+      sha256 "e56d0063e0f5693508a316ffaff5fccf7052a3f2f979642a18deb1f29392bc89"
+
+      def install
+        bin.install "mlp-darwin-arm64" => "mlp"
+
+        chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"mlp", "completion")
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.2.3/mlp-linux-amd64"
-      sha256 "6b1b4794bfec9659630b0d5832d3edb36b6832a6b7372eaa3a60bff14d3942ba"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/mia-platform/mlp/releases/download/v2.0.0/mlp-linux-amd64"
+        sha256 "ae28c70851301e97ad9e09d7dc2f205b6fd6659e14641ef6e38eb30c6742809c"
 
-      def install
-        bin.install "mlp-linux-amd64" => "mlp"
+        def install
+          bin.install "mlp-linux-amd64" => "mlp"
+
+          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+          generate_completions_from_executable(bin/"mlp", "completion")
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.2.3/mlp-linux-arm64"
-      sha256 "a1e5a10cd92c9f3113c35a69248d5b5ab5cdbd7a6474f0aa90275eb3ee81b4a0"
+    on_arm do
+      if !Hardware::CPU.is_64_bit?
+        url "https://github.com/mia-platform/mlp/releases/download/v2.0.0/mlp-linux-armv6"
+        sha256 "6fb4da42c7b323f1781e87e423dacb00f6d71da7e5b688109d8225b7e6bceed2"
 
-      def install
-        bin.install "mlp-linux-arm64" => "mlp"
+        def install
+          bin.install "mlp-linux-armv6" => "mlp"
+
+          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+          generate_completions_from_executable(bin/"mlp", "completion")
+        end
       end
     end
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v1.2.3/mlp-linux-armv6"
-      sha256 "a550243f2b4b7532b900b66faec54ce3b35d9badb1d15d776fa70edae991e0a6"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/mia-platform/mlp/releases/download/v2.0.0/mlp-linux-arm64"
+        sha256 "6cea7433f6cb5a28fde08ebaee38cf47b4836e5d8554cd5a6ee444d6c354ede8"
 
-      def install
-        bin.install "mlp-linux-armv6" => "mlp"
+        def install
+          bin.install "mlp-linux-arm64" => "mlp"
+
+          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+          generate_completions_from_executable(bin/"mlp", "completion")
+        end
       end
     end
   end
