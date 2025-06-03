@@ -5,13 +5,13 @@
 class Miactl < Formula
   desc "Mia Platform Cli for Console"
   homepage "https://www.mia-platform.eu"
-  version "0.17.3"
+  version "0.18.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.17.3/miactl-darwin-amd64"
-      sha256 "6fbe43aa1f116f4f736050b647e3d438f96096534c9d771771dbd680c0be44df"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.18.0/miactl-darwin-amd64"
+      sha256 "28b83d61f7cd044684057edd31b363f8c042365df3c75f7503837109aff5c470"
 
       def install
         bin.install "miactl-darwin-amd64" => "miactl"
@@ -21,8 +21,8 @@ class Miactl < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/miactl/releases/download/v0.17.3/miactl-darwin-arm64"
-      sha256 "2e1e06faa2fabf8024496a63e765d44a851df061eb71da98db9bc5576b6e683d"
+      url "https://github.com/mia-platform/miactl/releases/download/v0.18.0/miactl-darwin-arm64"
+      sha256 "618f7410447dc23e48d372690c1ede44182e8948c2d90d3e3f9281ea73230abe"
 
       def install
         bin.install "miactl-darwin-arm64" => "miactl"
@@ -34,43 +34,34 @@ class Miactl < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/miactl/releases/download/v0.17.3/miactl-linux-amd64"
-        sha256 "264f0f800540400f89e20aafaac630c8395bf71861ed4ecf56ac37f14b6e75f0"
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/miactl/releases/download/v0.18.0/miactl-linux-amd64"
+      sha256 "a5881d78c5f5a3b65cc0df31102b21c41ddea79c2c8fe6529c85f4332e8168ed"
+      def install
+        bin.install "miactl-linux-amd64" => "miactl"
 
-        def install
-          bin.install "miactl-linux-amd64" => "miactl"
-
-          chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"miactl", "completion")
-        end
+        chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"miactl", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if !Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/miactl/releases/download/v0.17.3/miactl-linux-armv6"
-        sha256 "1a6a0e515da4ffd922983a2a1ea426c7004e3c7e6723fc41e4dca1de72a6249e"
+    if Hardware::CPU.arm? and !Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/miactl/releases/download/v0.18.0/miactl-linux-armv6"
+      sha256 "ba08e5d890cd74b937085d2eabaed70ef252074a0782a359843f3e1b442885ae"
+      def install
+        bin.install "miactl-linux-armv6" => "miactl"
 
-        def install
-          bin.install "miactl-linux-armv6" => "miactl"
-
-          chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"miactl", "completion")
-        end
+        chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"miactl", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/miactl/releases/download/v0.17.3/miactl-linux-arm64"
-        sha256 "3fecb588b0f8c30ba9ab6eab5be92254a577626b3829725d6224ade42a3ef184"
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/miactl/releases/download/v0.18.0/miactl-linux-arm64"
+      sha256 "07c19ff4b213b5686f8b9c263cc37ecf3540de0991df84fe9fbee9d2019f94cf"
+      def install
+        bin.install "miactl-linux-arm64" => "miactl"
 
-        def install
-          bin.install "miactl-linux-arm64" => "miactl"
-
-          chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"miactl", "completion")
-        end
+        chmod 0555, bin/"miactl" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"miactl", "completion")
       end
     end
   end
