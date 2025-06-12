@@ -5,13 +5,13 @@
 class Vab < Formula
   desc "cli for managing the installation of day 2 operation tools on multiple kubernetes clusters"
   homepage "https://www.mia-platform.eu"
-  version "0.12.1"
+  version "0.13.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/vab/releases/download/v0.12.1/vab-darwin-amd64"
-      sha256 "6d418f9b2257be21c5cdd96ea09ca7e54ef8d8bbc47cb50d0b146602153b0a74"
+      url "https://github.com/mia-platform/vab/releases/download/v0.13.0/vab-darwin-amd64"
+      sha256 "b056ed897d44073b5525c080cb5081bbe67814d9ab77379aed330568e5eefffe"
 
       def install
         bin.install "vab-darwin-amd64" => "vab"
@@ -21,8 +21,8 @@ class Vab < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/vab/releases/download/v0.12.1/vab-darwin-arm64"
-      sha256 "63c464a7f42498982d1895fb216c24ad1e3075ba2974abf05d66809f028a928f"
+      url "https://github.com/mia-platform/vab/releases/download/v0.13.0/vab-darwin-arm64"
+      sha256 "b1d365f5cfdee4590f5b7c59c7025dd9c483b97586b2c5df81e69fd25aff4e0a"
 
       def install
         bin.install "vab-darwin-arm64" => "vab"
@@ -34,43 +34,34 @@ class Vab < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.12.1/vab-linux-amd64"
-        sha256 "e708276b2dff19a4e8bdab50b0e71adb1a887a6c9581801cec02dd2c9a6f03aa"
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/vab/releases/download/v0.13.0/vab-linux-amd64"
+      sha256 "7baa6138fbf7ceca75d37c2ec7df578d288f5f6e266b41859c99ff8278869895"
+      def install
+        bin.install "vab-linux-amd64" => "vab"
 
-        def install
-          bin.install "vab-linux-amd64" => "vab"
-
-          chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"vab", "completion")
-        end
+        chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"vab", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if !Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.12.1/vab-linux-armv6"
-        sha256 "385df070770cde9d72f665dbefb7e9b2c1bce7ea4e009496a86bb60c668fd0cd"
+    if Hardware::CPU.arm? and !Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/vab/releases/download/v0.13.0/vab-linux-armv6"
+      sha256 "40973bfa10fbb2aa2f93b5196934a7e65ab1eef75c62a95b6bc359cbd85627f0"
+      def install
+        bin.install "vab-linux-armv6" => "vab"
 
-        def install
-          bin.install "vab-linux-armv6" => "vab"
-
-          chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"vab", "completion")
-        end
+        chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"vab", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/vab/releases/download/v0.12.1/vab-linux-arm64"
-        sha256 "07624a8135243b6b6282b44a56678ef902056b50b9c2e5e53e1343f47e3134c8"
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/vab/releases/download/v0.13.0/vab-linux-arm64"
+      sha256 "8e07e9a50826097c93d331ece23c2a7aa0b64b66acaf49c3b42e29417e421ec6"
+      def install
+        bin.install "vab-linux-arm64" => "vab"
 
-        def install
-          bin.install "vab-linux-arm64" => "vab"
-
-          chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"vab", "completion")
-        end
+        chmod 0555, bin/"vab" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"vab", "completion")
       end
     end
   end
