@@ -5,13 +5,13 @@
 class Mlp < Formula
   desc "mlp is a CLI used to interpolate and deploy resource on Kubernetes"
   homepage "https://www.mia-platform.eu"
-  version "2.0.2"
+  version "2.1.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.0.2/mlp-darwin-amd64"
-      sha256 "d9a422fda99a8a5347d2ee171464c1c1147e38fc0751d73da2dedbb67dc742f2"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.1.0/mlp-darwin-amd64"
+      sha256 "507e9000eb8bf6d851e1bf375d304171e9eaa528806d0981f9c1403d1ef4cafc"
 
       def install
         bin.install "mlp-darwin-amd64" => "mlp"
@@ -21,8 +21,8 @@ class Mlp < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.0.2/mlp-darwin-arm64"
-      sha256 "22112224af1a7269bf8e9b8834316e22e4d6e122e7c2c4b967763813700bca9b"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.1.0/mlp-darwin-arm64"
+      sha256 "c1a4aa63d9505b50321d8bd559611ae1a77e3c85fc2594057ebf1a75facad0ac"
 
       def install
         bin.install "mlp-darwin-arm64" => "mlp"
@@ -34,43 +34,34 @@ class Mlp < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/mlp/releases/download/v2.0.2/mlp-linux-amd64"
-        sha256 "d17c052ce0ec6fbbe104c8ddf3a679665ddce03115b4b30d8c6d511d04e3504d"
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/mlp/releases/download/v2.1.0/mlp-linux-amd64"
+      sha256 "2130148fbf039d18ba5b179df9e227322ed498d25e62644ee1a422e1ac57d141"
+      def install
+        bin.install "mlp-linux-amd64" => "mlp"
 
-        def install
-          bin.install "mlp-linux-amd64" => "mlp"
-
-          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"mlp", "completion")
-        end
+        chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"mlp", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if !Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/mlp/releases/download/v2.0.2/mlp-linux-armv6"
-        sha256 "d4286571279013463a23c45626e419f7139a7c4c8c74e440ff5039a93479b8eb"
+    if Hardware::CPU.arm? and !Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/mlp/releases/download/v2.1.0/mlp-linux-armv6"
+      sha256 "ea1910744199532d3512de29b62bd727ce1bf9333be6faaa2a98e9682c4b3454"
+      def install
+        bin.install "mlp-linux-armv6" => "mlp"
 
-        def install
-          bin.install "mlp-linux-armv6" => "mlp"
-
-          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"mlp", "completion")
-        end
+        chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"mlp", "completion")
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/mia-platform/mlp/releases/download/v2.0.2/mlp-linux-arm64"
-        sha256 "27c19a1c40a77656dfe4b9c0a97f44c2f8e58da8a085296cdc06a85f571bc734"
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://github.com/mia-platform/mlp/releases/download/v2.1.0/mlp-linux-arm64"
+      sha256 "0b6f2de97591944a241ee1ee3828df9848f943eba1b58c59eab3edcfdaaf1aff"
+      def install
+        bin.install "mlp-linux-arm64" => "mlp"
 
-        def install
-          bin.install "mlp-linux-arm64" => "mlp"
-
-          chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
-          generate_completions_from_executable(bin/"mlp", "completion")
-        end
+        chmod 0555, bin/"mlp" # generate_completions_from_executable fails otherwise
+        generate_completions_from_executable(bin/"mlp", "completion")
       end
     end
   end
