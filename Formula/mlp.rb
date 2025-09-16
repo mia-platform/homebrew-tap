@@ -5,13 +5,13 @@
 class Mlp < Formula
   desc "mlp is a CLI used to interpolate and deploy resource on Kubernetes"
   homepage "https://www.mia-platform.eu"
-  version "2.2.0"
+  version "2.3.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.2.0/mlp-darwin-amd64"
-      sha256 "7a65e5e23752434906739b4975ba97a4fa215644b4493a696f35b5619f2a89d8"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.3.0/mlp-darwin-amd64"
+      sha256 "938d043bb6c7c242aca2d0929f7409b23d28343fddf4099421d0d13231aa94dc"
 
       def install
         bin.install "mlp-darwin-amd64" => "mlp"
@@ -21,8 +21,8 @@ class Mlp < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.2.0/mlp-darwin-arm64"
-      sha256 "5c75da6cb37de3d6f40af6fdc3fb4a69fc8e0bdf063136f2d4cbb7fa115b96e5"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.3.0/mlp-darwin-arm64"
+      sha256 "9891f2970ff4c017d3b9a6219c745e9791d9714ac807d1366339dd4a539d30c8"
 
       def install
         bin.install "mlp-darwin-arm64" => "mlp"
@@ -35,8 +35,8 @@ class Mlp < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.2.0/mlp-linux-amd64"
-      sha256 "a1099b12ff56a63e42e9a0707ffc10b5d1926d6f05d2235bf36409e2e9396be3"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.3.0/mlp-linux-amd64"
+      sha256 "ae900ca42f0bbf84ce4b700d3b287e148ae17b80a4fe56a46e7badbd8e0e549a"
       def install
         bin.install "mlp-linux-amd64" => "mlp"
 
@@ -45,8 +45,8 @@ class Mlp < Formula
       end
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.2.0/mlp-linux-armv6"
-      sha256 "32ad28e992517b4b6cdb1172c91e27db9d611a4995b77ca578d27b0b91049c7f"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.3.0/mlp-linux-armv6"
+      sha256 "56eef8c7f8ec065ec5406ef47ea4ac3abbf44d8cdc136c16b1500d3dfcda76ce"
       def install
         bin.install "mlp-linux-armv6" => "mlp"
 
@@ -55,8 +55,8 @@ class Mlp < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/mia-platform/mlp/releases/download/v2.2.0/mlp-linux-arm64"
-      sha256 "f493354e29e7ad19e23b83cf42ca9de07063972b62b3cc341bdd2241b3186ee1"
+      url "https://github.com/mia-platform/mlp/releases/download/v2.3.0/mlp-linux-arm64"
+      sha256 "3b104c3369687281469adbcf482d90eb33e82688dcf53a21dbcd4e07926730b6"
       def install
         bin.install "mlp-linux-arm64" => "mlp"
 
